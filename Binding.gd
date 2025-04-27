@@ -20,9 +20,11 @@ func set_binding(input_source: int, binding: int, device: int=- 2, axis_positive
 
 	elif input_source == InputSources.GP:
 		gp_btn = binding
+		gp_axis_device = device
 
 	elif input_source == InputSources.KB:
 		kb_btn = binding
+		gp_axis_device = device
 
 	else:
 		print_debug("invalid input source was supplied at BindingSet.set_binding:")
@@ -34,9 +36,9 @@ func set_binding_from_ev(ev: InputEvent):
 	if ev is InputEventJoypadMotion:
 		set_binding(InputSources.GP_AXIS, ev.axis, ev.device, ev.axis_value > 0)
 	elif ev is InputEventJoypadButton:
-		set_binding(InputSources.GP, ev.button_index)
+		set_binding(InputSources.GP, ev.button_index, ev.device)
 	elif ev is InputEventKey:
-		set_binding(InputSources.KB, ev.keycode)
+		set_binding(InputSources.KB, ev.keycode, ev.device)
 
 func clear_bindings():
 	current_input_source = InputSources.NONE

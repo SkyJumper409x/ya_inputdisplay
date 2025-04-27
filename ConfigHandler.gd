@@ -134,8 +134,8 @@ func save_bindings():
 			new_config_file.set_value(config_name, "input_source", binding.current_input_source)
 			new_config_file.set_value(config_name, "binding", binding.get_current_binding())
 		if binding.current_input_source == InputSources.GP_AXIS:
-			new_config_file.set_value(config_name, "gp_axis_device", binding.gp_axis_device)
 			new_config_file.set_value(config_name, "gp_axis_positive", binding.gp_axis_positive)
+		new_config_file.set_value(config_name, "gp_axis_device", binding.gp_axis_device)
 
 func color_index_to_config_key(index: int, version: float=current_config.version):
 	if version < 2:

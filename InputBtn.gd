@@ -97,7 +97,7 @@ func _input(ev):
 				binding.set_binding_from_ev(ev)
 			else:
 				mapping = false
-		elif ev.button_index == binding.gp_btn:
+		elif ev.button_index == binding.gp_btn and ev.device == binding.gp_axis_device:
 				if ev.pressed:
 					# Make sure the Input isnt a duplicate
 					if Engine.get_process_frames() != gp_previous_framecount:
@@ -118,7 +118,7 @@ func _input(ev):
 				count = 0
 				label.text = str(count)
 				update_length(0)
-			if ev.keycode == binding.kb_btn:
+			if ev.keycode == binding.kb_btn and ev.device == binding.gp_axis_device:
 				if ev.pressed:
 					update_input_counter()
 				else:
